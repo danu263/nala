@@ -7,6 +7,13 @@ export class PlaygroundServerStack extends Stack {
 
     const vpc = new ec2.Vpc(this, 'playground-vpc', {
       maxAzs: 2,
+      subnetConfiguration: [
+        {
+          cidrMask: 24,
+          name: 'public-subnet',
+          subnetType: ec2.SubnetType.PUBLIC,
+        },
+      ],
     });
 
 
